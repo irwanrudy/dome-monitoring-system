@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DOME MONITORING SYSTEM</title>
+    <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="highcharts/highcharts.js"></script>
+    <script type="text/javascript" src="highcharts/modules/exporting.js"></script>
+    <script type="text/javascript" src="highcharts/modules/offline-exporting.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+  </head>
+  <body>
+    <section class="backgnd">
+      <img src="img/backg.png" />
+    </section>
+
+    <section class="main">
+      <div class="main-content">
+        <header>
+          <img src="img/logo-01.png" alt="" />
+          <div class="main-title">
+            <h2>DOME CONTROLLING SYSTEM</h2>
+          </div>
+        </header>
+        <div class="timestamp">
+          <ul>
+            <li>
+              <h3 id="hari"></h3>
+              <svg>
+                <line x1="0" y1="0" x2="100" y2="0" class="line" />
+                <line x1="0" y1="5" x2="82" y2="5" class="line" />
+                <line x1="0" y1="10" x2="90" y2="10" class="line" />
+                <polygon points="90,0 99,11 110,11 102,0" class="poligon" />
+                <line x1="100" y1="0" x2="135" y2="40" class="line" />
+              </svg>
+              <div id="sensor" style="width:190px; margin:-12.5px 0 0 -120px; box-shadow:inset 0 0 10px white; font-size:12pt; border:solid 1px rgb(85,167,192); padding:5px 10px; border-bottom-right-radius:10px; border-top-left-radius:10px; transition-duration:1s;">DISPLAY SENSOR</div>
+            </li>
+            <li style="width:200px;">
+              <h3 id="tanggal"></h3>
+              <svg>
+                <line x1="0" y1="9" x2="200" y2="9" style="stroke:rgb(85,167,192); stroke-width:3;" />
+                <line x1="0" y1="16" x2="200" y2="16" class="line" />
+              </svg>
+              <div style="height:5px; width:100%; margin:-24px 0 0 0; background: -webkit-linear-gradient(left,rgba(85,167,192,0),rgba(85,167,192,1),rgba(85,167,192,0));"></div>
+              <div style="margin-top:5px; border-bottom:solid 1px rgb(85,167,192);">
+                <label id="koneksi" style="text-align:enter; font-size:14pt;" class="unconnect">NOT CONNECTED</label>
+              </div>
+            </li>
+            <li>
+              <h3 id="jam"></h3>
+              <svg>
+                <line x1="25" y1="0" x2="125" y2="0" class="line" />
+                <line x1="43" y1="5" x2="125" y2="5" class="line" />
+                <line x1="35" y1="10" x2="125" y2="10" class="line" />
+                <polygon points="25,0 36,0 25,11 16,11" class="poligon" />
+                <line x1="25" y1="0" x2="0" y2="28" class="line" />
+              </svg>
+              <div id="statistic" style="width:190px; margin:-12.5px 0 0 35px; box-shadow:inset 0 0 10px white; font-size:12pt; border:solid 1px rgb(85,167,192); padding:5px 10px; border-bottom-left-radius:10px; border-top-right-radius:10px; transition-duration:1s;">DISPLAY STATISTIC</div>
+            </li>
+          </ul>
+          <script type="text/javascript">makeClick(); Get_Timestamp()</script>
+        </div>
+        <div id="id-sensor-disp" class="sensor-disp" style="display:block;">
+          <ul>
+            <li>
+              <div class="left-sensor-top">
+                <svg style="height:150px; width:300px;">
+                  <line x1="50" y1="0" x2="225" y2="0" class="line" />
+                  <line x1="225" y1="0" x2="235" y2="10" class="line" />
+                  <line x1="50" y1="5" x2="200" y2="5" class="line" />
+                  <line x1="40" y1="10" x2="250" y2="10" class="line" />
+                  <line x1="250" y1="10" x2="300" y2="35" class="line" />
+                  <polygon points="50,0 50,10 150,10 150,0" class="poligon" />
+                  <line x1="40" y1="10" x2="0" y2="50" class="line" />
+                  <line x1="1" y1="49" x2="1" y2="125" class="line" />
+                  <line x1="1" y1="125" x2="215" y2="125" class="line" />
+                  <line x1="215" y1="10" x2="215" y2="125" class="line" />
+                  <polygon points="215,40 218,40 218,100 215,100 " class="poligon" />
+                  <line x1="11" y1="38" x2="11" y2="125" class="line" />
+                  <line x1="6" y1="44" x2="6" y2="140" class="line" />
+                  <line x1="6" y1="140" x2="200" y2="140" class="line" />
+                  <line x1="200" y1="140" x2="215" y2="125" class="line" />
+                  <polygon points="1,49 11,38 11,75 1,75 " class="poligon" />
+                  <line x1="11" y1="38" x2="200" y2="38" class="line" />
+                  <polygon points="6,130 11,130 11,140 6,140" class="poligon" />
+                  <polygon points="6,135 51,135 51,140 6,140" class="poligon" />
+                </svg>
+                <!--<img src="img/temp.png" style="height:60px; margin:-105px 0 0 -125px; position:absolute;"/>-->
+                <h4 style="margin:-140px 0 0 40px; padding:0; position:absolute;">TEMPERATURE</h4>
+                <label id="temp" style="font-size:36pt; margin:-110px 0 0 -100px; position:absolute;">0</label>
+                <label style="font-size:18pt; margin:-120px 0 0 0; position:absolute;">o</label>
+                <label style="font-size:36pt; margin:-110px 0 0 17.5px; position:absolute;">C</label>
+                <label id="temp-dn" style="font-size:12pt; margin:-55px 0 0 -100px; position:absolute;">NORMAL</label>
+                <div style="margin:-150px 0 0 -50px; width:300px; height:150px; text-align:left;">
+                  <label style="font-size:8pt; margin:10px 0 0 15px; position:absolute;">MAX</label>
+                  <label id="temp-max" style="font-size:8pt; margin:25px 0 0 0px; position:absolute;">100.00</label>
+                  <div style="height:1px; width:50px; margin:44px 0 0 0px;  background:rgb(85,167,192); position:absolute;"></div>
+                  <label style="font-size:8pt; margin:55px 0 0 0px; position:absolute;">STDEV</label>
+                  <label id="temp-stdv" style="font-size:8pt; margin:70px 0 0 0px; position:absolute;">100.00</label>
+                  <div style="height:1px; width:50px; margin:95px 0 0 0px;  background:rgb(85,167,192); position:absolute;"></div>
+                  <label style="font-size:8pt; margin:100px 0 0 20px; position:absolute;">MIN</label>
+                  <label id="temp-min" style="font-size:8pt; margin:115px 0 0 0px; position:absolute;">100.00</label>
+                </div>
+
+              </div>
+              <div class="left-sensor-bottom">
+                <svg style="height:150px; width:300px;">
+                  <line x1="50" y1="150" x2="225" y2="150" class="line" />
+                  <line x1="225" y1="150" x2="235" y2="140" class="line" />
+                  <line x1="50" y1="145" x2="200" y2="145" class="line" />
+                  <line x1="20" y1="140" x2="250" y2="140" class="line" />
+                  <line x1="250" y1="140" x2="275" y2="125" class="line" />
+                  <polygon points="50,150 50,140 150,140 150,150" class="poligon" />
+                  <line x1="20" y1="140" x2="0" y2="120" class="line" />
+                  <line x1="1" y1="25" x2="1" y2="121" class="line" />
+                  <line x1="1" y1="25" x2="195" y2="25" class="line" />
+                  <line x1="215" y1="45" x2="215" y2="140" class="line" />
+                  <line x1="195" y1="25" x2="215" y2="45" class="line" />
+                  <polygon points="215,50 218,50 218,110 215,110 " class="poligon" />
+                  <line x1="1" y1="50" x2="200" y2="50" class="line" />
+                </svg>
+                <!--<img src="img/lamp.png" style="height:60px; margin:-90px 0 0 -140px; position:absolute;"/>-->
+                <h4 style="margin:-127px 0 0 20px; padding:0; position:absolute;">LIGHT INTENSITY</h4>
+                <label id="light" style="font-size:36pt; margin:-100px 0 0 -100px; position:absolute;">0</label>
+                <label style="font-size:36pt; margin:-100px 0 0 10px; position:absolute;">%</label>
+                <label id="light-dn" style="font-size:12pt; margin:-40px 0 0 -100px; position:absolute;">MEDIUM</label>
+                <div style="margin:-150px 0 0 -50px; width:300px; height:150px; text-align:left;">
+                  <label style="font-size:8pt; margin:15px 0 0 15px; position:absolute;">MAX</label>
+                  <label id="temp-max" style="font-size:8pt; margin:30px 0 0 0px; position:absolute;">100.00</label>
+                  <div style="height:1px; width:50px; margin:45px 0 0 0px; position:absolute; background:rgb(85,167,192);"></div>
+                  <label style="font-size:8pt; margin:60px 0 0 0px; position:absolute;">STDEV</label>
+                  <label id="temp-stdv" style="font-size:8pt; margin:75px 0 0 0px; position:absolute;">100.00</label>
+                  <div style="height:1px; width:50px; margin:100px 0 0 0px; position:absolute; background:rgb(85,167,192);"></div>
+                  <label style="font-size:8pt; margin:105px 0 0 20px; position:absolute;">MIN</label>
+                  <label id="temp-min" style="font-size:8pt; margin:120px 0 0 0px; position:absolute;">100.00</label>
+                </div>
+              </div>
+              <div style="height:130px; width:130px; margin:35px 0 0 55px;">
+                <div style="height:128px; width:128px; margin:0; border-radius:50%; border:solid 1px rgb(85,167,192);"></div>
+
+                <div id="smoke" style="height:128px; width:128px; margin:-129px 0 0 1px; border-radius:50%; overflow:hidden; transition-duration:2s;">
+                  <div style="height:90px; width:90px; margin:-2px 0 0 0px; border-radius:50%; border:solid 20px rgb(85,167,192);"></div>
+                  <div style="height:64px; width:100%; margin-top:-128px; background:black;"></div>
+                </div>
+                <div style="height:90px; width:90px; margin:-111px 0 0 19px; position:absolute; border-radius:50%; border:solid 1px rgb(85,167,192); background:black;"></div>
+                <div style="display:none; height:64px; width:100%; margin-top:-64px; background:white;"></div>
+                <div style="height:67px; width:132px; margin:-65px 0 0 -1px; border-bottom-left-radius:65px; border-bottom-right-radius:65px; position:absolute; background:black;"></div>
+                <label style="font-size:10pt; margin:-105px 0 0 -12.5px; position:absolute;">ppm</label>
+                <label id="smoke-persen" style="width:50px; font-size:18pt; margin:-93px 0 0 -25px; position:absolute;">0</label>
+                <label style="font-size:10pt; margin:-65px 0 0 -61px; position:absolute;">0</label>
+                <label style="font-size:10pt; margin:-65px 0 0 35px; position:absolute;">1000</label>
+                <label id="smoke-dn" style="width:50px; font-size:8pt; margin:-63px 0 0 -25px; position:absolute; border-bottom:solid 1px rgb(85,167,192); border-top:solid 1px rgb(85,167,192);">0</label>
+                <label style="font-size:10pt; margin:-45px 0 0 -67px; position:absolute;">SMOKE INTENSITY</label>
+                <label id="temp-max" style="font-size:8pt; margin:-79px 0 0 70px; position:absolute;">100.00</label>
+                <label style="font-size:8pt; margin:-64px 0 0 85px; position:absolute;">MAX</label>
+                <div style="height:1px; width:50px; margin:-66px 0 0 129px; position:absolute; background:rgb(85,167,192);"></div>
+                <label id="temp-stdv" style="font-size:8pt; margin:-145px 0 0 -20px; position:absolute;">100.00</label>
+                <label style="font-size:8pt; margin:-160px 0 0 -20px; position:absolute;">STDEV</label>
+                <div style="height:1px; width:50px; margin:-66px 0 0 -49px; position:absolute; background:rgb(85,167,192);"></div>
+                <label id="temp-min" style="font-size:8pt; margin:-80px 0 0 -110px; position:absolute;">100.00</label>
+                <label style="font-size:8pt; margin:-64px 0 0 -100px; position:absolute;">MIN</label>
+              </div>
+            </li>
+            <li style="width:300px; padding-top:25px;">
+              <div class="dome-pic-outer">
+                <div class="dome-pic-inner">
+                  <img id='compass' src="img/compass.png" style="height:140px; margin:4px 0 0 0; transition-duration:1s;"/>
+                  <div style="width:0; height:0; margin:-148px 0 0 70px; z-index:10; position:absolute; border-left:5px solid transparent; border-right:5px solid transparent; border-top:10px solid rgb(0,137,188);"></div>
+                  <div style="height:97px; width:97px; margin:-127px 0 0 22px; position:absolute; z-index:20; border-radius:50%; border:4px solid rgb(85,167,192);">
+                    <img src="img/worldmap.png" style="width:90px; margin:30px 0 0 -45px;opacity:0.5; position:absolute;" />
+                    <div style="height:75px; width:75px; margin:10px 0 0 10px; border-radius:50%; border:1px solid rgba(85,167,192,.5);"></div>
+                    <div style="height:50px; width:50px; margin:-64px 0 0 22.5px; border-radius:50%; border:1px solid rgba(85,167,192,.5);"></div>
+                    <div style="height:95px; width:1px; margin:-74px 0 0 47px; background:rgba(85,167,192,.5);"></div>
+                    <div style="height:1px; width:95px; margin:-47px 0 0 1px; background:rgba(85,167,192,.5);"></div>
+                    <img src="img/marker.png" style="height:20px; margin:-7.5px 0 0 25px;position:absolute;" />
+                    <img src="img/radar.png" style="height:97px; margin:-50px 0 0 -49px; position:absolute; animation: putarRadar 3s linear infinite both;" />
+                    <!--<div style="height:7.5px; width:7.5px; margin:-50px 0 0 120px; border-radius:50%; background: rgb(85,167,192); animation: mainkanObjek1 3s linear infinite both;"></div>
+                    <div style="height:7.5px; width:7.5px; margin:-10px 0 0 110px; border-radius:50%; background: rgb(85,167,192); animation: mainkanObjek2 3s linear infinite both;"></div>
+                    <div style="height:7.5px; width:7.5px; margin:100px 0 0 70px; border-radius:50%; background: rgb(85,167,192); animation: mainkanObjek3 3s linear infinite both;"></div>
+                  -->
+                  </div>
+                </div>
+              </div>
+              <div class="middle-sensor-bottom">
+                <div style="height:120px; width:120px; margin:15px 0 0 15px; border-radius:50%; background:black; overflow:hidden;">
+                  <div id="kemiringan" style="height:120px; width:120px; border-radius:50%; transition-duration:1s;">
+                    <div style="height:60px; width:120px; border-top-left-radius:60px; border-top-right-radius:60px; background:rgb(0,111,186); border-bottom:solid 1px white;"></div>
+                    <div style="height:60px; width:120px; border-bottom-left-radius:60px; border-bottom-right-radius:60px; background:rgb(193,61,4); border-top:solid 1px white;"></div>
+                    <div style="height:0; width:0; margin:-120px 0 0 51px; transform:rotate(180deg); border-left:10px solid transparent; border-right:10px solid transparent; border-top:17.5px solid yellow;">
+                      <div style="height:0; width:0; margin:-15px 0 0 -5px; border-left:5px solid transparent; border-right:5px solid transparent; border-top:10px solid rgb(0,111,186);"></div>
+                      <div style="height:2px; width:15px; margin:-2px 0 0 2px; background:silver; transform:rotate(60deg);"></div>
+                      <div style="height:2px; width:15px; margin:-2px 0 0 -17px; background:silver; transform:rotate(-60deg);"></div>
+                    </div>
+                  </div>
+                </div>
+                <div style="height:70px; margin:-100px 0 0 35px; overflow:hidden; position:absolute;">
+                  <img id='sudut' src="img/roll-scale.png" style="width:80px; transition-duration:1s; margin-top:-16px;"/>
+                </div>
+                <div style="margin:-134px 0 0 0px; position:absolute;">
+                  <img src="img/scale.png" style="width:150px;margin-top:-1px;" />
+                </div>
+                <div style="color:white; font-size:10pt; margin:-15px 0 0 30px; position:absolute;">TILT ANGLE</div>
+              </div>
+              <div class="middle-sensor-underbottom">
+                <svg style="height:150px; width:250px; margin:0 auto;">
+                  <line x1="0" y1="16" x2="25" y2="60" class="line" />
+                  <line x1="225" y1="60" x2="250" y2="16" class="line" />
+                  <line x1="25" y1="60" x2="225" y2="60" class="line" />
+                  <line x1="30" y1="85" x2="220" y2="85" class="line" />
+                  <line x1="25" y1="60" x2="25" y2="130" class="line" />
+                  <line x1="25" y1="130" x2="40" y2="149" class="line" />
+                  <line x1="225" y1="60" x2="225" y2="130" class="line" />
+                  <line x1="40" y1="149" x2="210" y2="149" class="line" />
+                  <line x1="210" y1="149" x2="225" y2="130" class="line" />
+                  <polygon points="25,60 90,60 70,40 15,40" class="poligon" />
+                  <polygon points="225,60 160,60 180,40 235,40" class="poligon" />
+                  <polygon points="40,149 210,149 210,145 40,145" class="poligon" />
+                </svg>
+                <h4 style="margin:-90px auto 0 auto; padding:0;">HUMIDITY</h4>
+                <label id="humidity" style="font-size:36pt; margin:-100px 0 0 0px;">100</label>
+                <label style="font-size:36pt; margin:-100px 0 0 10px;">%</label>
+              </div>
+            </li>
+            <li>
+              <div class="right-sensor-top">
+                <svg style="height:150px; width:300px;">
+                  <line x1="250" y1="0" x2="75" y2="0" class="line" />
+                  <line x1="75" y1="0" x2="65" y2="10" class="line" />
+                  <line x1="250" y1="5" x2="100" y2="5" class="line" />
+                  <line x1="260" y1="10" x2="50" y2="10" class="line" />
+                  <line x1="50" y1="10" x2="2" y2="33" class="line" />
+                  <polygon points="250,0 250,10 150,10 150,0" class="poligon" />
+                  <line x1="260" y1="10" x2="300" y2="50" class="line" />
+                  <line x1="299" y1="49" x2="299" y2="125" class="line" />
+                  <line x1="299" y1="125" x2="85" y2="125" class="line" />
+                  <line x1="85" y1="10" x2="85" y2="125" class="line" />
+                  <polygon points="85,40 82,40 82,100 85,100 " class="poligon" />
+                  <line x1="289" y1="38" x2="289" y2="125" class="line" />
+                  <line x1="294" y1="44" x2="294" y2="140" class="line" />
+                  <line x1="294" y1="140" x2="100" y2="140" class="line" />
+                  <line x1="100" y1="140" x2="85" y2="125" class="line" />
+                  <polygon points="299,49 289,38 289,75 299,75 " class="poligon" />
+                  <line x1="259" y1="38" x2="85" y2="38" class="line" />
+                  <polygon points="294,130 289,130 289,140 294,140" class="poligon" />
+                  <polygon points="294,135 249,135 249,140 294,140" class="poligon" />
+                </svg>
+                <!--<img src="img/pot.png" style="height:50px; margin:-105px 0 0 -60px; position:absolute;"/>-->
+                <h4 style="margin:-140px 0 0 100px; padding:0; position:absolute;">WATER LEVEL</h4>
+                <label id="water" style="font-size:36pt; margin:-115px 0 0 -15px; position:absolute;">0</label>
+                <label style="font-size:16pt; margin:-83px 0 0 90px; position:absolute;">cm</label>
+                <label id="water-dn" style="font-size:12pt; margin:-55px 0 0 -25px; position:absolute;">NORMAL</label>
+                <div style="margin:-150px 0 0 53px; width:300px; height:150px; text-align:right;">
+                  <label style="font-size:8pt; margin:10px 0 0 -50px; position:absolute;">MAX</label>
+                  <label id="temp-max" style="font-size:8pt; margin:25px 0 0 -50px; position:absolute;">100.00</label>
+                  <div style="height:1px; width:50px; margin:44px 0 0 245px; position:absolute; background:rgb(85,167,192);"></div>
+                  <label style="font-size:8pt; margin:55px 0 0 -50px; position:absolute;">STDEV</label>
+                  <label id="temp-stdv" style="font-size:8pt; margin:70px 0 0 -50px; position:absolute;">100.00</label>
+                  <div style="height:1px; width:50px; margin:95px 0 0 245px; position:absolute; background:rgb(85,167,192);"></div>
+                  <label style="font-size:8pt; margin:100px 0 0 -50px; position:absolute;">MIN</label>
+                  <label id="temp-min" style="font-size:8pt; margin:115px 0 0 -50px; position:absolute;">100.00</label>
+                </div>
+              </div>
+              <div class="right-sensor-bottom">
+                <svg style="height:150px; width:300px;">
+                  <line x1="250" y1="150" x2="75" y2="150" class="line"/>
+                  <line x1="75" y1="150" x2="65" y2="140" class="line" />
+                  <line x1="250" y1="145" x2="100" y2="145" class="line" />
+                  <line x1="280" y1="140" x2="50" y2="140" class="line" />
+                  <line x1="50" y1="140" x2="25" y2="125" class="line" />
+                  <polygon points="250,150 250,140 150,140 150,150" class="poligon" />
+                  <line x1="280" y1="140" x2="300" y2="120" class="line" />
+                  <line x1="299" y1="25" x2="299" y2="121" class="line" />
+                  <line x1="299" y1="25" x2="105" y2="25" class="line" />
+                  <line x1="85" y1="45" x2="85" y2="140" class="line" />
+                  <line x1="105" y1="25" x2="85" y2="45" class="line" />
+                  <polygon points="85,50 82,50 82,110 85,110 " class="poligon" />
+                  <line x1="85" y1="46" x2="280" y2="46" class="line" />
+                </svg>
+                <!--<img src="img/ruller.png" style="height:60px; margin:-95px 0 0 -50px; position:absolute;"/>-->
+                <h4 style="margin:-129px 0 0 110px; padding:0; position:absolute;">DEPTH</h4>
+                <label id="depth" style="font-size:36pt; margin:-105px 0 0 -15px; position:absolute;">0</label>
+                <label style="font-size:16pt; margin:-83px 0 0 90px; position:absolute;">cm</label>
+                <label id="depth-dn" style="font-size:12pt; margin:-45px 0 0 0px; position:absolute;">NORMAL</label>
+                <div style="margin:-150px 0 0 53px; width:300px; height:150px; text-align:right;">
+                  <label style="font-size:8pt; margin:15px 0 0 -50px; position:absolute;">MAX</label>
+                  <label id="temp-max" style="font-size:8pt; margin:30px 0 0 -50px; position:absolute;">100.00</label>
+                  <div style="height:1px; width:50px; margin:47px 0 0 245px; position:absolute; background:rgb(85,167,192);"></div>
+                  <label style="font-size:8pt; margin:60px 0 0 -50px; position:absolute;">STDEV</label>
+                  <label id="temp-stdv" style="font-size:8pt; margin:74px 0 0 -50px; position:absolute;">100.00</label>
+                  <div style="height:1px; width:50px; margin:100px 0 0 245px; position:absolute; background:rgb(85,167,192);"></div>
+                  <label style="font-size:8pt; margin:105px 0 0 -50px; position:absolute;">MIN</label>
+                  <label id="temp-min" style="font-size:8pt; margin:120px 0 0 -50px; position:absolute;">100.00</label>
+                </div>
+              </div>
+              <div style="height:130px; width:130px; margin:35px 0 0 10px;">
+                <div style="height:128px; width:128px; margin:0; border-radius:50%; border:solid 1px rgb(85,167,192);"></div>
+
+                <div id="flame" style="height:128px; width:128px; margin:-129px 0 0 1px; border-radius:50%; overflow:hidden; transition-duration:2s;">
+                  <div style="height:90px; width:90px; margin:-2px 0 0 1px; border-radius:50%; border:solid 20px rgb(85,167,192);"></div>
+                  <div style="height:64px; width:100%; margin-top:-128px; background:black;"></div>
+                </div>
+                <div style="height:90px; width:90px; margin:-111px 0 0 19px; position:absolute; border-radius:50%; border:solid 1px rgb(85,167,192); background:black;"></div>
+                <div style="display:none; height:64px; width:100%; margin-top:-64px; background:white;"></div>
+                <div style="height:67px; width:132px; margin:-65px 0 0 -1px; border-bottom-left-radius:65px; border-bottom-right-radius:65px; position:absolute; background:black;"></div>
+                <label style="font-size:10pt; margin:-105px 0 0 -5px; position:absolute;">%</label>
+                <label id="flame-persen" style="width:50px; font-size:18pt; margin:-93px 0 0 -25px; position:absolute;">0</label>
+                <label style="font-size:10pt; margin:-65px 0 0 -61px; position:absolute;">0</label>
+                <label style="font-size:10pt; margin:-65px 0 0 41px; position:absolute;">100</label>
+                <label id="flame-dn" style="width:50px; font-size:8pt; margin:-63px 0 0 -25px; position:absolute; border-bottom:solid 1px rgb(85,167,192); border-top:solid 1px rgb(85,167,192);">0</label>
+                <label style="font-size:10pt; margin:-45px 0 0 -67px; position:absolute;">FLAME INTENSITY</label>
+                <label id="temp-max" style="font-size:8pt; margin:-79px 0 0 70px; position:absolute;">100.00</label>
+                <label style="font-size:8pt; margin:-64px 0 0 85px; position:absolute;">MAX</label>
+                <div style="height:1px; width:50px; margin:-66px 0 0 129px; position:absolute; background:rgb(85,167,192);"></div>
+                <label id="temp-stdv" style="font-size:8pt; margin:-145px 0 0 -20px; position:absolute;">100.00</label>
+                <label style="font-size:8pt; margin:-160px 0 0 -20px; position:absolute;">STDEV</label>
+                <div style="height:1px; width:50px; margin:-66px 0 0 -49px; position:absolute; background:rgb(85,167,192);"></div>
+                <label id="temp-min" style="font-size:8pt; margin:-80px 0 0 -110px; position:absolute;">100.00</label>
+                <label style="font-size:8pt; margin:-64px 0 0 -100px; position:absolute;">MIN</label>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- Copy bagian chart mulai dari sini-->
+        <!--
+        <div id="id-statistic-disp" class="statistic-disp" style="display:display; margin-top: 30px;">
+          <div class="tombol-chart">
+            <ul>
+              <li id="tmb-chart-0" onclick="Call_Temp_Chart()">TEMPERATURE</li>
+              <li id="tmb-chart-1">LIGHT</br>INTENSITY</li>
+              <li id="tmb-chart-2">SOIL</br>MOISTURE</li>
+              <li id="tmb-chart-3">DEPTH</li>
+              <li id="tmb-chart-4">SMOKE</br>INTENSITY</li>
+              <li id="tmb-chart-5">FLAME</br>INTENSITY</li>
+              <li id="tmb-chart-6">COMPARE</br>CHART</li>
+            </ul>
+          </div>
+          <div id="container" style="min-width: 310px; height: 375px; margin:0 auto; padding:0;"></div>
+        </div>
+      -->
+        <!-- sampek sini-->
+        <!--<script type="text/javascript">Call_Temp_Chart()</script>-->
+      </div>
+
+    </section>
+  </body>
+
+</html>

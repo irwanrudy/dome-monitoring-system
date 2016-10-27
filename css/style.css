@@ -1,0 +1,85 @@
+
+@font-face {font-family: orbitron; src: url(../font/Orbitron Medium.otf);}
+@font-face {font-family: orbitron light; src: url(../font/Orbitron Light.otf);}
+
+html, body{height: 100%; width: 100%; margin: 0; padding: 0; background-color: black; overflow: hidden; font-family: 'orbitron light'; color: rgb(85,167,192); position: absolute;}
+
+.backgnd{height: 100%; width: 100%; position: absolute;}
+.backgnd img{height: 100%; width: 100%;}
+.main{height: 100%; width: 100%; margin: 0; position: absolute;}
+.main-content{height: 100%; width: 1000px; margin: 0 auto; overflow: hidden;}
+.main-content header{height: 75px; width: 100%; text-align: center;}
+.main-content header img{width: 700px; height: auto; margin: 10px 0 0 0;}
+.main-title{height: 30px; width: 1000px; margin-top: -25px;}
+.main-title h2{height: auto; width: 650px; color: rgb(63,135,170); font-family: 'orbitron'; font-size: 21pt; border-bottom: solid 1px rgb(79,189,214); margin: 0 auto; padding-bottom: 5px;}
+.timestamp{height: 60px; width: 1000px; text-align: center; margin-top: 15px;}
+.timestamp ul{height: 50px; width: 450px; margin: 0 auto; padding: 0;}
+.timestamp ul li{height: 100px; width: 125px; list-style: none; float: left; color: rgb(85,167,192);}
+.timestamp ul li h3{font-family: 'orbitron'; margin: 0; padding: 0;}
+.timestamp ul li svg{height:30px; width: 100%;}
+.timestamp ul li #sensor:hover, .timestamp ul li #statistic:hover{color: white; background: rgb(85,167,192); box-shadow:inset 0 0 10px black; transition-duration: 1s; cursor: pointer;}
+
+.line{stroke:rgb(85,167,192); stroke-width:2;}
+.poligon{fill:rgb(85,167,192);}
+
+.timestamp ul li #hari{font-size: 11pt; text-align: left;}
+.timestamp ul li #tanggal{margin: 15px 0 0 0; font-size: 13pt;}
+.timestamp ul li #jam{font-size: 11pt; text-align: right;}
+.sensor-disp{height: 475px; width: 700px; margin: 0 auto; text-align: center;}
+.sensor-disp ul{height: auto; width: 700px; margin: 20px 0 0 0; padding: 0; position: absolute;}
+.sensor-disp ul li{height: 250px; width: 200px; margin: 0; padding: 0; float: left; list-style: none;}
+.sensor-disp ul li .dome-pic-outer{height: 150px; width: 150px; margin: -15px auto 0 auto; border: solid 1px rgb(85,167,192); border-radius: 50%; box-shadow: 0 0 5px white;}
+.sensor-disp ul li .dome-pic-outer .dome-pic-inner{height: 148px; width: 148px; margin: 0; border: solid 1px rgb(85,167,192); border-radius: 50%; background: black; overflow: none;}
+.sensor-disp ul li .left-sensor-top, .sensor-disp ul li .left-sensor-bottom{height: 150px; width: 300px;}
+.sensor-disp ul li .right-sensor-top, .sensor-disp ul li .right-sensor-bottom{height: 150px; width: 300px; margin-left: -100px;}
+.sensor-disp ul li .middle-sensor-underbottom{height: 150px; width: 300px; margin-top: -50px;}
+.sensor-disp ul li .middle-sensor-bottom{height: 150px; width: 150px; margin: 10px 0 0 70px; border-radius: 50%; border: solid 5px rgb(85,167,192); box-shadow: 0 0 7px white; overflow: hidden;}
+/*.sensor-disp ul li .dome-pic-outer .dome-pic-inner #compass{animation: putarKompas 20s linear infinite both;}*/
+.statistic-disp{height: 475px; width: 700px; margin: 0 auto; text-align: center;}
+.statistic-disp .tombol-chart{height: 50px; width: 700px; margin: 0 auto; padding: 10px 0 10px 0; text-align: center; border-bottom: solid 1px rgb(85,167,192);}
+.statistic-disp .tombol-chart ul{height: auto; width: 700px; margin-top: 0; margin-left: 10px; padding: 0; position: absolute;}
+.statistic-disp .tombol-chart ul li{height: 32px; color: white; transition-duration: 1s; background:rgba(85,167,192,.15); font-size: 10pt; float: left; margin: 0 5px 0 0; padding: 5px; list-style: none; box-shadow:inset 0 0 5px rgb(85,167,192); border:solid 1px rgb(85,167,192);}
+.statistic-disp .tombol-chart ul li:hover{cursor: pointer; background:rgba(85,167,192,.5);}
+
+.connect{color:rgb(85,167,192);}
+.unconnect{color:rgb(163,28,28); animation: mainUnconnected 1s linear infinite both;}
+
+.normal{color:rgb(85,167,192);}
+.warning{color:rgb(226,139,35);}
+.danger{color:rgb(163,28,28); animation: mainUnconnected 1s linear infinite both;}
+
+@keyframes putarKompas {
+  0%{transform: rotate(0deg);}
+  25%{transform: rotate(15deg);}
+  50%{transform: rotate(0deg);}
+  75%{transform: rotate(-15deg);}
+  100%{transform: rotate(0deg);}
+}
+@keyframes putarRadar {
+  0%{transform: rotate(0deg);}
+  100%{transform: rotate(360deg);}
+}
+@keyframes mainkanObjek1 {
+  0%{opacity: 0;}
+  10%{opacity: 1;}
+  15%{opacity: 0;}
+  100%{opacity: 0;}
+}
+@keyframes mainkanObjek2 {
+  0%{opacity: 0;}
+  9%{opacity: 1;}
+  14%{opacity: 0;}
+  100%{opacity: 0;}
+}
+@keyframes mainkanObjek3 {
+  0%{opacity: 0;}
+  40%{opacity: 0;}
+  50%{opacity: 1;}
+  60%{opacity: 0;}
+  100%{opacity: 0;}
+}
+@keyframes mainUnconnected {
+  0%{display: : 0;}
+  50%{opacity: 1;}
+  100%{opacity: 0;}
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DOME MONITORING SYSTEM</title>
+    <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="highcharts/highcharts.js"></script>
+    <script type="text/javascript" src="highcharts/modules/exporting.js"></script>
+    <script type="text/javascript" src="highcharts/modules/offline-exporting.js"></script>
+    <script type="text/javascript" src="js/script_chart.js"></script>
+  </head>
+  <body>
+    <section class="backgnd">
+      <img src="img/backg.png" />
+    </section>
+
+    <section class="main">
+      <div class="main-content">
+        <header>
+          <img src="img/logo-01.png" alt="" />
+          <div class="main-title">
+            <h2>DOME CONTROLLING SYSTEM</h2>
+          </div>
+        </header>
+        <div class="timestamp">
+          <ul>
+            <li>
+              <h3 id="hari"></h3>
+              <svg>
+                <line x1="0" y1="0" x2="100" y2="0" class="line" />
+                <line x1="0" y1="5" x2="82" y2="5" class="line" />
+                <line x1="0" y1="10" x2="90" y2="10" class="line" />
+                <polygon points="90,0 99,11 110,11 102,0" class="poligon" />
+                <line x1="100" y1="0" x2="135" y2="40" class="line" />
+              </svg>
+              <div id="sensor" style="width:190px; margin:-12.5px 0 0 -120px; box-shadow:inset 0 0 10px white; font-size:12pt; border:solid 1px rgb(85,167,192); padding:5px 10px; border-bottom-right-radius:10px; border-top-left-radius:10px; transition-duration:1s;">DISPLAY SENSOR</div>
+            </li>
+            <li style="width:200px;">
+              <h3 id="tanggal"></h3>
+              <svg>
+                <line x1="0" y1="9" x2="200" y2="9" style="stroke:rgb(85,167,192); stroke-width:3;" />
+                <line x1="0" y1="16" x2="200" y2="16" class="line" />
+              </svg>
+              <div style="height:5px; width:100%; margin:-24px 0 0 0; background: -webkit-linear-gradient(left,rgba(85,167,192,0),rgba(85,167,192,1),rgba(85,167,192,0));"></div>
+              <div style="margin-top:5px; border-bottom:solid 1px rgb(85,167,192);">
+                <label id="koneksi" style="text-align:enter; font-size:14pt;" class="unconnect">NOT CONNECTED</label>
+              </div>
+            </li>
+            <li>
+              <h3 id="jam"></h3>
+              <svg>
+                <line x1="25" y1="0" x2="125" y2="0" class="line" />
+                <line x1="43" y1="5" x2="125" y2="5" class="line" />
+                <line x1="35" y1="10" x2="125" y2="10" class="line" />
+                <polygon points="25,0 36,0 25,11 16,11" class="poligon" />
+                <line x1="25" y1="0" x2="0" y2="28" class="line" />
+              </svg>
+              <div id="statistic" style="width:190px; margin:-12.5px 0 0 35px; box-shadow:inset 0 0 10px white; font-size:12pt; border:solid 1px rgb(85,167,192); padding:5px 10px; border-bottom-left-radius:10px; border-top-right-radius:10px; transition-duration:1s;">DISPLAY STATISTIC</div>
+            </li>
+          </ul>
+          <script type="text/javascript">makeClick(); Get_Timestamp()</script>
+        </div>
+        <!-- Copy bagian chart mulai dari sini-->
+        <div id="id-statistic-disp" class="statistic-disp" style="display:display; margin-top: 30px;">
+          <div class="tombol-chart">
+            <ul>
+              <li id="tmb-chart-0" onclick="Call_Temp_Chart()">TEMPERATURE</li>
+              <li id="tmb-chart-1" onclick="Call_Light_Chart()">LIGHT</br>INTENSITY</li>
+              <li id="tmb-chart-2">SOIL</br>MOISTURE</li>
+              <li id="tmb-chart-3">DEPTH</li>
+              <li id="tmb-chart-4">SMOKE</br>INTENSITY</li>
+              <li id="tmb-chart-5">FLAME</br>INTENSITY</li>
+              <li id="tmb-chart-6">COMPARE</br>CHART</li>
+            </ul>
+          </div>
+          
+          <div id="container" style="min-width: 310px; height: 375px; margin:0 auto; padding:0;"></div>
+        </div>
+        <!-- sampek sini-->
+        <script type="text/javascript">Call_Temp_Chart()</script>
+      </div>
+
+    </section>
+  </body>
+
+</html>
